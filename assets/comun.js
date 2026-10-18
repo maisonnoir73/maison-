@@ -47,5 +47,26 @@
     return window.supabase.createClient(c.url, c.key);
   }
 
-  window.MaisonUI = { ICON, MOMENTO, FAMILIAS, icono, pesos, esc, frasco, imagen, cliente };
+  // Tema claro / oscuro (se recuerda en el celular)
+  const SOL = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  const LUNA = '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>';
+  function temaActual() { return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'; }
+  function botonTema(btn) {
+    const pintar = () => {
+      const oscuro = temaActual() === 'dark';
+      btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + (oscuro ? SOL : LUNA) + '</svg><span>' + (oscuro ? 'Claro' : 'Oscuro') + '</span>';
+      btn.setAttribute('aria-label', oscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+      const m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.content = oscuro ? '#0d0c0a' : '#f4f2ee';
+    };
+    btn.onclick = () => {
+      const nuevo = temaActual() === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = nuevo;
+      try { localStorage.setItem('maison-tema', nuevo); } catch (_) {}
+      pintar();
+    };
+    pintar();
+  }
+
+  window.MaisonUI = { ICON, MOMENTO, FAMILIAS, icono, pesos, esc, frasco, imagen, cliente, botonTema };
 })();
