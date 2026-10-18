@@ -1,0 +1,37 @@
+name: Fotos de perfumes
+
+on:
+  workflow_dispatch:
+    inputs:
+      forzar:
+        description: "Rehacer todas las fotos (aunque ya existan)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  fotos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar herramientas
+        run: pip install "rembg[cpu]" pillow requests
+
+      - name: Descargar fotos y quitar fondo
+        env:
+          FORZAR: ${{ inputs.forzar && '1' || '0' }}
+        run: python herramientas/fotos.py
+
+      - name: Guardar fotos en el repo
+        run: |
+          git config user.name "Maison Noir"
+          git config user.email "actions@github.com"
+          git add fotos
+          git diff --cached --quiet && echo "No hay fotos nuevas" || (git commit -m "Fotos de perfumes sin fondo" && git push)
