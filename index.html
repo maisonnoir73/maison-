@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maison Noir · Perfumería</title>
+<meta name="description" content="Catálogo de perfumes Maison Noir: árabes, de diseñador y nicho. Pide por WhatsApp.">
+<meta name="theme-color" content="#0b0a08">
+<!-- Vista previa al compartir el link (WhatsApp, Instagram, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Maison Noir · Catálogo de perfumes">
+<meta property="og:description" content="Árabes, diseñador y nicho. Mira el catálogo y pide por WhatsApp.">
+<meta property="og:image" content="https://maisonnoir73.github.io/maison-/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/icono.png">
+<link rel="apple-touch-icon" href="assets/icono.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap">
+<style>
+:root{
+  --noir:#0b0a08; --carbon:#15130f; --line:#2a251c;
+  --gold:#d4ad5a; --gold-soft:#a8884a; --ivory:#efe8da; --mute:#8d8576; --off:#5a554c;
+  --display:"Italiana","Didot",Georgia,serif;
+  --body:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--noir)}
+body{margin:0;background:var(--noir);color:var(--ivory);font-family:var(--body);font-weight:300;font-size:15px;line-height:1.45;-webkit-tap-highlight-color:transparent;padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:520px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.hero{display:block;margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-top:env(safe-area-inset-top,0px);background:#000}
+.hero img{display:block;width:100%;height:auto}
+.tag{text-align:center;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);margin:14px 0 22px}
+
+.gender{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.gbtn{appearance:none;border:1px solid var(--line);background:var(--carbon);color:var(--ivory);border-radius:14px;padding:14px 4px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;font:inherit;cursor:pointer;transition:border-color .2s,background .2s}
+.gbtn svg{width:26px;height:26px;stroke:var(--gold-soft);fill:none;stroke-width:1.3}
+.gbtn span{font-family:var(--display);font-size:18px;letter-spacing:.06em}
+.gbtn small{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.gbtn[aria-pressed="true"]{border-color:var(--gold);background:linear-gradient(180deg,#221d13,var(--carbon))}
+.gbtn[aria-pressed="true"] svg{stroke:var(--gold)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{appearance:none;flex:none;border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:999px;padding:7px 16px;font:inherit;font-size:13px;letter-spacing:.04em;cursor:pointer}
+.chip[aria-pressed="true"]{color:var(--noir);background:var(--gold);border-color:var(--gold);font-weight:500}
+.count{font-size:12px;color:var(--mute);margin:10px 0 4px;letter-spacing:.04em}
+
+.list{display:flex;flex-direction:column}
+.item{display:grid;grid-template-columns:108px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);position:relative;scroll-margin-top:20px}
+.item:last-child{border-bottom:0}
+.item.focus{animation:glow 2s ease}
+@keyframes glow{0%,40%{background:rgba(212,173,90,.10)}100%{background:transparent}}
+.bottle{position:relative;height:150px;display:flex;align-items:flex-end;justify-content:center}
+.bottle::after{content:"";position:absolute;bottom:-4px;left:18%;right:18%;height:14px;border-radius:50%;background:radial-gradient(closest-side,rgba(212,173,90,.28),transparent)}
+.bottle .frasco{height:100%;width:auto;position:relative;z-index:1}
+.bottle .foto{position:relative;z-index:1;max-height:100%;width:100%;object-fit:contain;object-position:bottom}
+.info{min-width:0;display:flex;flex-direction:column;gap:6px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.casa{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft)}
+.name{font-family:var(--display);font-size:24px;line-height:1.05;letter-spacing:.02em;text-wrap:balance;min-width:0}
+.price{font-size:17px;font-weight:400;color:var(--gold);white-space:nowrap;font-variant-numeric:tabular-nums}
+.when{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;letter-spacing:.05em;color:var(--ivory);border:1px solid var(--line);border-radius:999px;padding:3px 9px 3px 7px}
+.pill svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.6}
+.notes{display:flex;gap:12px;flex-wrap:wrap;margin-top:2px}
+.note{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mute)}
+.note svg{width:15px;height:15px;stroke:var(--gold-soft);fill:none;stroke-width:1.4}
+.desc{font-size:13px;color:var(--ivory);opacity:.82;margin:2px 0 0}
+.wa{align-self:flex-start;margin-top:6px;display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--gold);font-size:12px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--gold-soft);padding-bottom:2px}
+.wa svg{width:14px;height:14px;fill:var(--gold)}
+
+.item.out .bottle,.item.out .info>*:not(.top):not(.casa){filter:grayscale(1);opacity:.38}
+.item.out .price{color:var(--off);text-decoration:line-through}
+.item.out .name{color:var(--mute)}
+.badge{position:absolute;top:22px;left:0;z-index:2;font-size:10px;letter-spacing:.2em;text-transform:uppercase;background:var(--noir);color:var(--ivory);border:1px solid var(--off);padding:3px 8px;border-radius:4px}
+
+.foot{text-align:center;margin-top:28px;display:flex;flex-direction:column;gap:10px;align-items:center}
+.foot a{color:var(--gold);text-decoration:none;font-size:13px;letter-spacing:.08em}
+.foot small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--off)}
+.loading{padding:40px 0;text-align:center;color:var(--mute);font-size:13px}
+@media (prefers-reduced-motion:no-preference){.item{animation:rise .4s ease both}@keyframes rise{from{transform:translateY(6px)}to{transform:none}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="hero" href="./" aria-label="Maison Noir"><img id="logo" src="assets/logo.jpg" alt="Maison Noir"></a>
+  <p class="tag">Catálogo de perfumes</p>
+
+  <div class="gender" role="group" aria-label="Género">
+    <button class="gbtn" data-g="masculino" aria-pressed="true">
+      <svg viewBox="0 0 24 24"><circle cx="10" cy="14" r="6"/><path d="M14.5 9.5 20 4M15 4h5v5"/></svg>
+      <span>Hombre</span><small>Masculinos</small></button>
+    <button class="gbtn" data-g="unisex" aria-pressed="false">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
+      <span>Unisex</span><small>Para todos</small></button>
+    <button class="gbtn" data-g="femenino" aria-pressed="false">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M12 15v7M9 19h6"/></svg>
+      <span>Mujer</span><small>Femeninos</small></button>
+  </div>
+
+  <div class="chips" role="group" aria-label="Tipo">
+    <button class="chip" data-t="" aria-pressed="true">Todos</button>
+    <button class="chip" data-t="Árabe" aria-pressed="false">Árabes</button>
+    <button class="chip" data-t="Diseñador" aria-pressed="false">Diseñador</button>
+    <button class="chip" data-t="Nicho" aria-pressed="false">Nicho</button>
+  </div>
+
+  <p class="count" id="count"></p>
+  <div class="list" id="list"><p class="loading">Cargando catálogo…</p></div>
+
+  <footer class="foot">
+    <a id="wa-foot" href="https://wa.me/573117026638" target="_blank" rel="noopener">WhatsApp · 311 702 6638</a>
+    <small>Maison Noir · Medellín</small>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="assets/comun.js"></script>
+<script>
+const UI = MaisonUI, db = UI.cliente();
+const WA_ICON = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>';
+let P = [], G = 'masculino', T = '', WA = '573117026638';
+
+async function cargar() {
+  try {
+    if (db) {
+      const [p, a] = await Promise.all([
+        db.from('perfumes').select('id,slug,nombre,casa,genero,tipo,precio,disponible,momento,notas,descripcion,foto,orden').order('orden'),
+        db.from('ajustes').select('clave,valor')
+      ]);
+      if (p.error) throw p.error;
+      P = p.data;
+      (a.data || []).forEach(({ clave, valor }) => {
+        if (clave === 'whatsapp' && valor) WA = valor.replace(/\D/g, '');
+        if (clave === 'logo_url' && valor) document.getElementById('logo').src = valor;
+      });
+    } else {
+      P = await (await fetch('data/catalogo.json')).json();
+    }
+  } catch (e) {
+    console.error(e);
+    try { P = await (await fetch('data/catalogo.json')).json(); } catch (_) { P = []; }
+  }
+  document.getElementById('wa-foot').href = 'https://wa.me/' + WA;
+  const h = decodeURIComponent(location.hash.slice(1));
+  const destino = P.find(x => x.slug === h);
+  if (destino) {
+    G = destino.genero;
+    document.querySelectorAll('.gbtn').forEach(x => x.setAttribute('aria-pressed', x.dataset.g === G));
+  }
+  pintar();
+  if (destino) {
+    const el = document.getElementById(destino.slug);
+    if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('focus'); }
+  }
+}
+
+function pintar() {
+  const items = P.filter(p => p.genero === G && (!T || p.tipo === T));
+  document.getElementById('count').textContent = items.length + ' perfume' + (items.length === 1 ? '' : 's');
+  document.getElementById('list').innerHTML = items.map((p, i) => {
+    const notas = Array.isArray(p.notas) ? p.notas : [];
+    const msg = encodeURIComponent('Hola Maison Noir, me interesa el ' + p.casa + ' ' + p.nombre);
+    return `
+    <article class="item${p.disponible ? '' : ' out'}" id="${UI.esc(p.slug)}" style="animation-delay:${Math.min(i, 8) * 50}ms">
+      ${p.disponible ? '' : '<span class="badge">Agotado</span>'}
+      <div class="bottle">${UI.imagen(p)}</div>
+      <div class="info">
+        <div class="casa">${UI.esc(p.casa)}</div>
+        <div class="top"><div class="name">${UI.esc(p.nombre)}</div><div class="price">${UI.pesos(p.precio)}</div></div>
+        ${(p.momento || []).length ? `<div class="when">${p.momento.map(w => `<span class="pill">${UI.icono(w)}${UI.MOMENTO[w] || w}</span>`).join('')}</div>` : ''}
+        ${notas.length ? `<div class="notes">${notas.map(n => `<span class="note">${UI.icono(n.i)}${UI.esc(n.t)}</span>`).join('')}</div>` : ''}
+        ${p.descripcion ? `<p class="desc">${UI.esc(p.descripcion)}</p>` : ''}
+        ${p.disponible ? `<a class="wa" data-id="${p.id}" href="https://wa.me/${WA}?text=${msg}" target="_blank" rel="noopener">${WA_ICON}Pedir</a>` : ''}
+      </div>
+    </article>`;
+  }).join('') || '<p class="loading">No hay perfumes en este filtro todavía.</p>';
+}
+
+// Cada clic en "Pedir" cuenta como una pregunta (para el resumen de más preguntados)
+document.getElementById('list').addEventListener('click', e => {
+  const a = e.target.closest('.wa');
+  if (a && db) db.from('preguntas').insert({ perfume_id: Number(a.dataset.id), origen: 'whatsapp' }).then(() => {});
+});
+document.querySelectorAll('.gbtn').forEach(b => b.onclick = () => {
+  G = b.dataset.g; document.querySelectorAll('.gbtn').forEach(x => x.setAttribute('aria-pressed', x === b)); pintar();
+});
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  T = b.dataset.t; document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === b)); pintar();
+});
+cargar();
+</script>
+</body>
+</html>
